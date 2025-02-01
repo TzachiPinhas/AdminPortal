@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Library Management Portal</h1>
+
+    <button onclick="showSection('book-list')">View All Books</button>
+    <button onclick="showSection('add-book-form')">Add New Book</button>
+    <button onclick="showSection('borrow-list')">View All Borrows</button>
+
+    <!-- תצוגת כל הספרים -->
+    <div id="book-list" class="content-section" style="display:none;">
+        <h2>All Books</h2>
+        <div id="book-items"></div>
+    </div>
+
+    <!-- טופס להוספת ספר חדש -->
+    <div id="add-book-form" class="content-section" style="display:none;">
+        <h3>Add New Book</h3>
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <button onclick="submitNewBook()">Submit</button>
+    </div>
+
+    <!-- תצוגת כל ההשאלות -->
+    <div id="borrow-list" class="content-section" style="display:none;">
+        <h2>Borrow Records</h2>
+        <button onclick="filterBorrows('all')">All Borrows</button>
+        <button onclick="filterBorrows('pending')">Pending Borrows</button>
+        <button onclick="filterBorrows('approved')">Approved Borrows</button>
+        <button onclick="filterBorrows('returned')">Returned Borrows</button>
+        <div id="borrows-container"></div>
+    </div>
+
+    <div id="edit-book-form" class="content-section" style="display:none;">
+        <h3>Edit Book</h3>
+        <input type="hidden" id="edit-book-id">
+        <input type="text" id="edit-title" placeholder="Title" required>
+        <input type="text" id="edit-author" placeholder="Author" required>
+        <input type="number" id="edit-stock" placeholder="Stock" required>
+        <input type="text" id="edit-category" placeholder="Category" required>
+        <button onclick="submitBookEdit()">Save Changes</button>
+        <button onclick="showSection('book-list')">Cancel</button>
+    </div>
+    
+
+    <script src="script.js" defer></script>
+</body>
+</html>
